@@ -7,10 +7,11 @@ import java.sql.Statement;
 
 public class ConexaoBancoDados {
 
-    private static final String URL = "jdbc:sqlite:fintrack.db";
+
+    public static final String URL_PADRAO = "jdbc:sqlite:fintrack-poo.db";
 
     public static Connection conection() throws SQLException {
-        return conection(URL);
+        return conection(URL_PADRAO);
     }
 
     public static Connection conection(String url) throws SQLException {
@@ -20,13 +21,16 @@ public class ConexaoBancoDados {
     }
 
     private static void criarTabelaSeNaoExistir(Connection conexao) throws SQLException {
-        String sql = "CREATE TABLE IF NOT EXISTS transacoes (" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "descricao VARCHAR(100)," +
-                "valor DECIMAL(10,2)," +
-                "tipo VARCHAR(10)," +
-                "data DATE" +
-                ")";
+        String sql = "CREATE TABLE IF NOT EXISTS transacoes ("
+                + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + "tipo VARCHAR(10) NOT NULL,"
+                + "descricao VARCHAR(100) NOT NULL,"
+                + "valor DECIMAL(10,2) NOT NULL,"
+                + "data DATE NOT NULL,"
+                + "categoria VARCHAR(100) NOT NULL,"
+                + "fonte VARCHAR(100),"
+                + "forma_pagamento VARCHAR(100)"
+                + ")";
         try (Statement stmt = conexao.createStatement()) {
             stmt.execute(sql);
         }

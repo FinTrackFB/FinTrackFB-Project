@@ -6,33 +6,47 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
-          fx:controller="dio.fintrack.controller.NovaTransacaoController"
-          hgap="10" vgap="10">
+          fx:controller="dio.fintrack.view.NovaTransacaoController"
+          hgap="12" vgap="12" prefWidth="440">
 
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
 
-    <Label text="Descrição:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-    <TextField fx:id="campoDescricao" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+    <columnConstraints>
+        <ColumnConstraints minWidth="140"/>
+        <ColumnConstraints hgrow="ALWAYS" minWidth="220"/>
+    </columnConstraints>
 
-    <Label text="Valor:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-    <TextField fx:id="campoValor" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+    <Label text="Tipo:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+    <ComboBox fx:id="campoTipo" maxWidth="Infinity" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
 
-    <Label text="Tipo:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-    <ComboBox fx:id="campoTipo" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+    <Label text="Descrição:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <TextField fx:id="campoDescricao" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+    <Label text="Valor (R$):" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+    <TextField fx:id="campoValor" promptText="Ex.: 150,50" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
 
     <Label text="Data:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-    <DatePicker fx:id="campoData" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+    <DatePicker fx:id="campoData" maxWidth="Infinity" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
 
-    <HBox spacing="10" GridPane.rowIndex="4" GridPane.columnIndex="1">
-        <Button text="Salvar" onAction="#salvar"/>
-        <Button text="Cancelar" onAction="#cancelar"/>
+    <Label text="Categoria:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+    <ComboBox fx:id="campoCategoria" editable="true" maxWidth="Infinity"
+              GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+    <Label fx:id="labelDetalhe" text="Fonte:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+    <TextField fx:id="campoDetalhe" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT"
+          GridPane.rowIndex="6" GridPane.columnIndex="0" GridPane.columnSpan="2">
+        <Button text="Cancelar" onAction="#cancelar" cancelButton="true"/>
+        <Button text="Salvar" onAction="#salvar" defaultButton="true"/>
     </HBox>
 
 </GridPane>

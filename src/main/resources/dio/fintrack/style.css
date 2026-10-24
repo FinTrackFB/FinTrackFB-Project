@@ -1,48 +1,30 @@
-.root {
-    -fx-background-color: #f4f6f8;
-    -fx-font-family: "Segoe UI", sans-serif;
-}
-
-.label {
-    -fx-text-fill: #070606;
-}
-
-.button {
-    -fx-background-color: #ff0127;
-    -fx-text-fill: white;
+.titulo {
+    -fx-font-size: 26px;
     -fx-font-weight: bold;
-    -fx-background-radius: 6;
-    -fx-padding: 8 16 8 16;
-    -fx-cursor: hand;
+    -fx-text-fill: #2c3e50;
 }
 
-.button:hover {
-    -fx-background-color: #86414b;
-}
-
-.table-row-cell:hover {
-    -fx-background-color: #eaf2fd;
-    -fx-cursor: hand;
-}
-
-.table-view {
-    -fx-background-color: white;
-    -fx-border-color: #d9dfe4;
-    -fx-border-radius: 6;
-}
-
-.table-view .column-header {
-    -fx-background-color: #2c3e50;
-}
-
-.table-view .column-header .label {
-    -fx-text-fill: white;
+.card {
+    -fx-font-size: 15px;
     -fx-font-weight: bold;
+    -fx-padding: 10 18 10 18;
+    -fx-background-radius: 8;
+    -fx-text-fill: white;
 }
 
-.text-field, .combo-box, .date-picker {
-    -fx-background-radius: 4;
-    -fx-border-color: #c9d2d9;
-    -fx-border-radius: 4;
-    -fx-padding: 4;
-}
+.card-receita { -fx-background-color: #1e8e3e; }
+.card-despesa { -fx-background-color: #d93025; }
+.card-saldo   { -fx-background-color: #2c3e50; }
+
+.button.perigo { -fx-background-color: #d93025; }
+.button.perigo:hover { -fx-background-color: #b3261e; }
+
+.valor-receita { -fx-text-fill: #1e8e3e; -fx-font-weight: bold; }
+.valor-despesa { -fx-text-fill: #d93025; -fx-font-weight: bold; }
+
+.table-row-cell:hover { -fx-background-color: #eaf2fd; }
+
+.default-color0.chart-bar { -fx-bar-fill: #1e8e3e; }
+.default-color1.chart-bar { -fx-bar-fill: #d93025; }
+.default-color0.chart-legend-item-symbol { -fx-background-color: #1e8e3e; }
+.default-color1.chart-legend-item-symbol { -fx-background-color: #d93025; }
