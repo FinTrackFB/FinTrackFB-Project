@@ -10,4 +10,8 @@ O FinTrack permite ao usuário:
 - Remover transações existentes
 
 ## 👤 Autor
-Desenvolvido por **Julio Gadelha** 
+Desenvolvido por **Julio Gabriel**
+Desenvolvido por **Matheus Jose** 
+Desenvolvido por **Rodrigo Juca** 
+
+
