@@ -1,73 +1,58 @@
 package dio.fintrack.model;
 
+import dio.fintrack.exception.ValorInvalidoException;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Transacao {
+public abstract class Transacao {
+
     private Integer id;
-    private String descricao;
-    private BigDecimal valor;
-    private Tipo tipo;
-    private LocalDate data;
+    private final String descricao;
+    private final BigDecimal valor;
+    private final LocalDate data;
+    private final Categoria categoria;
 
-    public Transacao() {
-    }
-
-    public Transacao(String descricao, BigDecimal valor, Tipo tipo, LocalDate data) {
-        this.descricao = descricao;
+    protected Transacao(String descricao, BigDecimal valor, LocalDate data, Categoria categoria)
+            throws ValorInvalidoException {
+        if (descricao == null || descricao.isBlank()) {
+            throw new ValorInvalidoException("Descrição obrigatória");
+        }
+        if (valor == null || valor.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new ValorInvalidoException("O valor deve ser maior que zero");
+        }
+        if (data == null) {
+            throw new ValorInvalidoException("Data inválida");
+        }
+        if (categoria == null) {
+            throw new ValorInvalidoException("Categoria obrigatória");
+        }
+        this.descricao = descricao.trim();
         this.valor = valor;
-        this.tipo = tipo;
         this.data = data;
+        this.categoria = categoria;
     }
 
-    public Integer getId() {
-        return id;
-    }
+    public abstract BigDecimal getValorComSinal();
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    public abstract Tipo getTipo();
 
-    public String getDescricao() {
-        return descricao;
-    }
+    public Integer getId() { return id; }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
 
-    public BigDecimal getValor() {
-        return valor;
-    }
+    public void setId(Integer id) { this.id = id; }
 
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
-    }
+    public String getDescricao() { return descricao; }
 
-    public Tipo getTipo() {
-        return tipo;
-    }
+    public BigDecimal getValor() { return valor; }
 
-    public void setTipo(Tipo tipo) {
-        this.tipo = tipo;
-    }
+    public LocalDate getData() { return data; }
 
-    public LocalDate getData() {
-        return data;
-    }
-
-    public void setData(LocalDate data) {
-        this.data = data;
-    }
+    public Categoria getCategoria() { return categoria; }
 
     @Override
     public String toString() {
-        return "Transacao{" +
-                "id=" + id +
-                ", descricao='" + descricao + '\'' +
-                ", valor=" + valor +
-                ", tipo=" + tipo +
-                ", data=" + data +
-                '}';
+        return getTipo() + " #" + id + " | " + data + " | " + descricao
+                + " | " + categoria + " | R$ " + valor;
     }
 }
