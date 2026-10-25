@@ -72,12 +72,7 @@ public class NovaTransacaoController {
     }
 
     private BigDecimal lerValor() throws ValorInvalidoException {
-        String texto = campoValor.getText() == null ? "" : campoValor.getText().trim().replace(",", ".");
-        try {
-            return new BigDecimal(texto);
-        } catch (NumberFormatException e) {
-            throw new ValorInvalidoException("Valor inválido: digite apenas números, por exemplo 150,50");
-        }
+        return Formatador.lerValor(campoValor.getText());
     }
 
     @FXML

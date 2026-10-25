@@ -184,12 +184,7 @@ public class MenuConsole {
     }
 
     private BigDecimal lerValor() throws ValorInvalidoException {
-        String texto = lerTexto("Valor: ").replace(",", ".");
-        try {
-            return new BigDecimal(texto);
-        } catch (NumberFormatException e) {
-            throw new ValorInvalidoException("Valor inválido: digite apenas números, por exemplo 150.50");
-        }
+        return Formatador.lerValor(lerTexto("Valor: "));
     }
 
     private LocalDate lerData() {
