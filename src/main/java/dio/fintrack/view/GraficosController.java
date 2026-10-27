@@ -32,7 +32,7 @@ public class GraficosController {
         montarGraficoReceitaDespesa();
     }
 
-    // UC06 em forma de gráfico: o mesmo Map do relatório por categoria
+
     private void montarGraficoDeCategorias() {
         Map<Categoria, BigDecimal> gastos = service.gastosPorCategoria();
 

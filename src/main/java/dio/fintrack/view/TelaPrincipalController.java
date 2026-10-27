@@ -39,7 +39,7 @@ public class TelaPrincipalController {
     @FXML private Label labelSaldo;
     @FXML private TextField campoBusca;
 
-    // O FinApp entrega o service pronto (injeção de dependência)
+
     public TelaPrincipalController(ContaService service) {
         this.service = service;
     }
@@ -52,7 +52,6 @@ public class TelaPrincipalController {
         colunaDescricao.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getDescricao()));
         colunaCategoria.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getCategoria().getNome()));
 
-        // Polimorfismo na tela: getValorComSinal devolve + na receita e - na despesa
         colunaValor.setCellValueFactory(c ->
                 new SimpleStringProperty(Formatador.dinheiroComSinal(c.getValue().getValorComSinal())));
         colunaValor.setCellFactory(coluna -> new TableCell<Transacao, String>() {
@@ -102,7 +101,14 @@ public class TelaPrincipalController {
         abrirJanela("/dio/fintrack/graficos.fxml", "Gráficos",
                 classe -> new GraficosController(service));
     }
-
+    @FXML
+    private void relatorio() {
+        abrirJanela(
+                "/dio/fintrack/relatorio.fxml",
+                "Relatório Financeiro",
+                classe -> new RelatorioController(service)
+        );
+    }
 
     @FXML
     private void buscar() {

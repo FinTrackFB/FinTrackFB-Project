@@ -63,6 +63,8 @@
             <Region HBox.hgrow="ALWAYS"/>
             <Button text="Gráficos" onAction="#graficos"/>
             <Button text="Exportar CSV" onAction="#exportarCsv"/>
+            <Button text="Relatório" onAction="#relatorio"/>
+
         </HBox>
     </bottom>
 
