@@ -13,8 +13,7 @@ public abstract class Transacao {
     private final LocalDate data;
     private final Categoria categoria;
 
-    protected Transacao(String descricao, BigDecimal valor, LocalDate data, Categoria categoria)
-            throws ValorInvalidoException {
+    protected Transacao(String descricao, BigDecimal valor, LocalDate data, Categoria categoria)throws ValorInvalidoException {
         if (descricao == null || descricao.isBlank()) {
             throw new ValorInvalidoException("Descrição obrigatória");
         }

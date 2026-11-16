@@ -45,6 +45,7 @@ public class ContaService {
         conta.adicionar(despesa);
         return despesa;
     }
+
     public Set<Categoria> categoriasEmUso() {
         return conta.categoriasEmUso();
     }
